@@ -1,0 +1,96 @@
+{
+  "game_info": {
+    "timestamp": "2025-08-22T00:41:58.183627",
+    "black_player": {
+      "model": "gemini-2.5-flash",
+      "provider": "google",
+      "display_name": "Gemini 2.5 Flash"
+    },
+    "white_player": {
+      "model": "gpt-5",
+      "provider": "openai",
+      "display_name": "GPT-5"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "H",
+      "row": 9,
+      "coordinate": "H9"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "J",
+      "row": 8,
+      "coordinate": "J8"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "I",
+      "row": 10,
+      "coordinate": "I10"
+    },
+    {
+      "move_number": 7,
+      "player": "B",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "L",
+      "row": 8,
+      "coordinate": "L8"
+    },
+    {
+      "move_number": 8,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "K",
+      "row": 8,
+      "coordinate": "K8"
+    },
+    {
+      "move_number": 9,
+      "player": "B",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "J",
+      "row": 9,
+      "coordinate": "J9"
+    }
+  ],
+  "result": {
+    "winner": "Black",
+    "winner_color": "B",
+    "total_moves": 9,
+    "winning_line": null,
+    "game_end_reason": "White forfeited - failed to make valid move after retries"
+  }
+}

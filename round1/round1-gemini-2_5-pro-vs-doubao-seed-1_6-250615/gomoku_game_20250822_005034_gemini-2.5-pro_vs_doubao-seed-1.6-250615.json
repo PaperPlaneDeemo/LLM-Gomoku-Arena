@@ -1,0 +1,96 @@
+{
+  "game_info": {
+    "timestamp": "2025-08-22T00:49:02.475542",
+    "black_player": {
+      "model": "gemini-2.5-pro",
+      "provider": "google",
+      "display_name": "Gemini 2.5 Pro"
+    },
+    "white_player": {
+      "model": "doubao-seed-1.6-250615",
+      "provider": "volcengine",
+      "display_name": "Doubao Seed 1.6"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "Doubao Seed 1.6",
+      "column": "H",
+      "row": 7,
+      "coordinate": "H7"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "Doubao Seed 1.6",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "J",
+      "row": 8,
+      "coordinate": "J8"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "Doubao Seed 1.6",
+      "column": "K",
+      "row": 8,
+      "coordinate": "K8"
+    },
+    {
+      "move_number": 7,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "I",
+      "row": 9,
+      "coordinate": "I9"
+    },
+    {
+      "move_number": 8,
+      "player": "W",
+      "player_name": "Doubao Seed 1.6",
+      "column": "I",
+      "row": 7,
+      "coordinate": "I7"
+    },
+    {
+      "move_number": 9,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "G",
+      "row": 7,
+      "coordinate": "G7"
+    }
+  ],
+  "result": {
+    "winner": "Black",
+    "winner_color": "B",
+    "total_moves": 9,
+    "winning_line": null,
+    "game_end_reason": "White forfeited - failed to make valid move after retries"
+  }
+}

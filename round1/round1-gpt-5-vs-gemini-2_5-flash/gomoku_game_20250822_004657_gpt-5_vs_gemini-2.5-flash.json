@@ -1,0 +1,162 @@
+{
+  "game_info": {
+    "timestamp": "2025-08-22T00:41:50.645327",
+    "black_player": {
+      "model": "gpt-5",
+      "provider": "openai",
+      "display_name": "GPT-5"
+    },
+    "white_player": {
+      "model": "gemini-2.5-flash",
+      "provider": "google",
+      "display_name": "Gemini 2.5 Flash"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "H",
+      "row": 7,
+      "coordinate": "H7"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "I",
+      "row": 7,
+      "coordinate": "I7"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "J",
+      "row": 8,
+      "coordinate": "J8"
+    },
+    {
+      "move_number": 7,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "F",
+      "row": 8,
+      "coordinate": "F8"
+    },
+    {
+      "move_number": 8,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "E",
+      "row": 8,
+      "coordinate": "E8"
+    },
+    {
+      "move_number": 9,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "H",
+      "row": 9,
+      "coordinate": "H9"
+    },
+    {
+      "move_number": 10,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "G",
+      "row": 7,
+      "coordinate": "G7"
+    },
+    {
+      "move_number": 11,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "E",
+      "row": 7,
+      "coordinate": "E7"
+    },
+    {
+      "move_number": 12,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "J",
+      "row": 7,
+      "coordinate": "J7"
+    },
+    {
+      "move_number": 13,
+      "player": "B",
+      "player_name": "GPT-5",
+      "column": "F",
+      "row": 7,
+      "coordinate": "F7"
+    },
+    {
+      "move_number": 14,
+      "player": "W",
+      "player_name": "Gemini 2.5 Flash",
+      "column": "K",
+      "row": 7,
+      "coordinate": "K7"
+    }
+  ],
+  "result": {
+    "winner": "White",
+    "winner_color": "W",
+    "total_moves": 14,
+    "winning_line": [
+      {
+        "column": "K",
+        "row": 7,
+        "coordinate": "K7"
+      },
+      {
+        "column": "J",
+        "row": 7,
+        "coordinate": "J7"
+      },
+      {
+        "column": "I",
+        "row": 7,
+        "coordinate": "I7"
+      },
+      {
+        "column": "H",
+        "row": 7,
+        "coordinate": "H7"
+      },
+      {
+        "column": "G",
+        "row": 7,
+        "coordinate": "G7"
+      }
+    ],
+    "game_end_reason": "White achieved 5 in a row"
+  }
+}

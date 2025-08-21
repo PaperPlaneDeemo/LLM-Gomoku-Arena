@@ -1,0 +1,122 @@
+{
+  "game_info": {
+    "timestamp": "2025-08-22T00:25:47.011721",
+    "black_player": {
+      "model": "deepseek-chat",
+      "provider": "deepseek",
+      "display_name": "DeepSeek V3.1"
+    },
+    "white_player": {
+      "model": "kimi-k2-0711-preview",
+      "provider": "moonshot",
+      "display_name": "Kimi K2"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "DeepSeek V3.1",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "Kimi K2",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "DeepSeek V3.1",
+      "column": "H",
+      "row": 9,
+      "coordinate": "H9"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "Kimi K2",
+      "column": "I",
+      "row": 9,
+      "coordinate": "I9"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "DeepSeek V3.1",
+      "column": "H",
+      "row": 10,
+      "coordinate": "H10"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "Kimi K2",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 7,
+      "player": "B",
+      "player_name": "DeepSeek V3.1",
+      "column": "H",
+      "row": 7,
+      "coordinate": "H7"
+    },
+    {
+      "move_number": 8,
+      "player": "W",
+      "player_name": "Kimi K2",
+      "column": "H",
+      "row": 6,
+      "coordinate": "H6"
+    },
+    {
+      "move_number": 9,
+      "player": "B",
+      "player_name": "DeepSeek V3.1",
+      "column": "H",
+      "row": 11,
+      "coordinate": "H11"
+    }
+  ],
+  "result": {
+    "winner": "Black",
+    "winner_color": "B",
+    "total_moves": 9,
+    "winning_line": [
+      {
+        "column": "H",
+        "row": 11,
+        "coordinate": "H11"
+      },
+      {
+        "column": "H",
+        "row": 10,
+        "coordinate": "H10"
+      },
+      {
+        "column": "H",
+        "row": 9,
+        "coordinate": "H9"
+      },
+      {
+        "column": "H",
+        "row": 8,
+        "coordinate": "H8"
+      },
+      {
+        "column": "H",
+        "row": 7,
+        "coordinate": "H7"
+      }
+    ],
+    "game_end_reason": "Black achieved 5 in a row"
+  }
+}

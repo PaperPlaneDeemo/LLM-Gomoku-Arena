@@ -1,0 +1,178 @@
+{
+  "game_info": {
+    "timestamp": "2025-08-22T06:08:09.512112",
+    "black_player": {
+      "model": "gemini-2.5-pro",
+      "provider": "google",
+      "display_name": "Gemini 2.5 Pro"
+    },
+    "white_player": {
+      "model": "deepseek-r1-250528",
+      "provider": "volcengine",
+      "display_name": "DeepSeek R1 (Volce)"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "F",
+      "row": 8,
+      "coordinate": "F8"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "H",
+      "row": 9,
+      "coordinate": "H9"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "H",
+      "row": 7,
+      "coordinate": "H7"
+    },
+    {
+      "move_number": 7,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "H",
+      "row": 10,
+      "coordinate": "H10"
+    },
+    {
+      "move_number": 8,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "I",
+      "row": 7,
+      "coordinate": "I7"
+    },
+    {
+      "move_number": 9,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "H",
+      "row": 11,
+      "coordinate": "H11"
+    },
+    {
+      "move_number": 10,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "H",
+      "row": 12,
+      "coordinate": "H12"
+    },
+    {
+      "move_number": 11,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "J",
+      "row": 7,
+      "coordinate": "J7"
+    },
+    {
+      "move_number": 12,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "I",
+      "row": 6,
+      "coordinate": "I6"
+    },
+    {
+      "move_number": 13,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "G",
+      "row": 7,
+      "coordinate": "G7"
+    },
+    {
+      "move_number": 14,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "I",
+      "row": 9,
+      "coordinate": "I9"
+    },
+    {
+      "move_number": 15,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "F",
+      "row": 9,
+      "coordinate": "F9"
+    },
+    {
+      "move_number": 16,
+      "player": "W",
+      "player_name": "DeepSeek R1 (Volce)",
+      "column": "I",
+      "row": 10,
+      "coordinate": "I10"
+    }
+  ],
+  "result": {
+    "winner": "White",
+    "winner_color": "W",
+    "total_moves": 16,
+    "winning_line": [
+      {
+        "column": "I",
+        "row": 10,
+        "coordinate": "I10"
+      },
+      {
+        "column": "I",
+        "row": 9,
+        "coordinate": "I9"
+      },
+      {
+        "column": "I",
+        "row": 8,
+        "coordinate": "I8"
+      },
+      {
+        "column": "I",
+        "row": 7,
+        "coordinate": "I7"
+      },
+      {
+        "column": "I",
+        "row": 6,
+        "coordinate": "I6"
+      }
+    ],
+    "game_end_reason": "White achieved 5 in a row"
+  }
+}

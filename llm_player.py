@@ -65,7 +65,7 @@ class LLMPlayer:
         color_name = "Black" if self.stone_color == "B" else "White"
         opponent_name = "White" if self.stone_color == "B" else "Black"
         
-        return f"""You are playing Gomoku (Five-in-a-Row) as {color_name} stones. 
+        base_prompt = f"""You are playing Gomoku (Five-in-a-Row) as {color_name} stones. 
 
 RULES:
 - The board is 15x15 with coordinates A-O (columns) and 1-15 (rows)
@@ -78,6 +78,8 @@ IMPORTANT MOVE RULES:
 - You CANNOT place stones on positions already occupied by 'B' or 'W'
 
 Always use the place_stone function to make your move."""
+        
+        return base_prompt
     
     def _get_board_state_message(self, board: GomokuBoard) -> str:
         """Generate message describing current board state"""
@@ -117,12 +119,28 @@ Always use the place_stone function to make your move."""
             
             logging.debug(f"[{self.display_name}] Making API call to model: {self.model}")
             
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=messages,
-                tools=[self.place_stone_schema],
-                tool_choice={"type": "function", "function": {"name": "place_stone"}}
-            )
+            # Prepare API call parameters
+            api_params = {
+                "model": self.model,
+                "messages": messages,
+                "tools": [self.place_stone_schema]
+            }
+            
+            # Special handling for different models
+            if self.model == "deepseek-v3-1-250821":
+                # deepseek-v3-1-250821 has issues with forced tool choice, use auto instead
+                api_params["tool_choice"] = "auto"
+                logging.debug(f"[{self.display_name}] Using tool_choice='auto' for deepseek-v3-1-250821")
+            else:
+                # Default forced tool choice for other models
+                api_params["tool_choice"] = {"type": "function", "function": {"name": "place_stone"}}
+            
+            # Add thinking parameter for GLM-4.5 model only
+            if self.model == "glm-4.5":
+                api_params["extra_body"] = {"thinking": {"type": "enabled"}}
+                logging.debug(f"[{self.display_name}] Added thinking parameter via extra_body for model: {self.model}")
+            
+            response = self.client.chat.completions.create(**api_params)
             
             # Parse the tool call
             tool_call = response.choices[0].message.tool_calls[0]

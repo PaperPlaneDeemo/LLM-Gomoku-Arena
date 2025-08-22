@@ -34,7 +34,8 @@ class ModelManager:
         "zhipuai": ["glm-4.5"],
         "anthropic": ["anthropic/claude-sonnet-4"],
         "google": ["gemini-2.5-pro", "gemini-2.5-flash"],
-        "volcengine": ["doubao-seed-1.6-250615"]
+        "volcengine": ["doubao-seed-1.6-250615", "deepseek-r1-250528", "deepseek-v3-1-250821"],
+        "stepfun": ["step-3"]
     }
     
     def __init__(self):
@@ -171,7 +172,12 @@ def get_model_display_name(provider: str, model_name: str) -> str:
             "gemini-2.5-flash": "Gemini 2.5 Flash"
         },
         "volcengine": {
-            "doubao-seed-1.6-250615": "Doubao Seed 1.6"
+            "doubao-seed-1.6-250615": "Doubao Seed 1.6",
+            "deepseek-r1-250528": "DeepSeek R1 (Volce)",
+            "deepseek-v3-1-250821": "DeepSeek V3.1 (Volce)"
+        },
+        "stepfun": {
+            "step-3": "Step-3"
         }
     }
     

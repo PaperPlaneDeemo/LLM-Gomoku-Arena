@@ -46,3 +46,7 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+# Claude AI assistant files
+.claude/
+CLAUDE.md

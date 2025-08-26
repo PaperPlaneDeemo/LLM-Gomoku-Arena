@@ -14,6 +14,7 @@ class ModelConfig:
     model_name: str
     api_key: str
     base_url: str
+    extra_body: Optional[Dict[str, Any]] = None
     
     def create_client(self) -> openai.OpenAI:
         """Create an OpenAI-compatible client for this model"""
@@ -21,6 +22,13 @@ class ModelConfig:
             api_key=self.api_key,
             base_url=self.base_url
         )
+    
+    def get_chat_completion_kwargs(self) -> Dict[str, Any]:
+        """Get additional kwargs for chat completion requests"""
+        kwargs = {}
+        if self.extra_body:
+            kwargs["extra_body"] = self.extra_body
+        return kwargs
 
 
 class ModelManager:
@@ -35,7 +43,8 @@ class ModelManager:
         "anthropic": ["anthropic/claude-sonnet-4"],
         "google": ["gemini-2.5-pro", "gemini-2.5-flash"],
         "volcengine": ["doubao-seed-1.6-250615", "deepseek-r1-250528", "deepseek-v3-1-250821"],
-        "stepfun": ["step-3"]
+        "stepfun": ["step-3"],
+        "openrouter": ["qwen/qwen3-235b-a22b-thinking-2507"]
     }
     
     def __init__(self):
@@ -68,11 +77,23 @@ class ModelManager:
             raise ValueError(f"Model '{model_name}' not supported for provider '{provider}'. Available: {available_models}")
         
         config_data = self.configs[provider]
+        
+        # Handle provider-specific extra configurations
+        extra_body = None
+        if provider == "openrouter":
+            extra_body = {
+                "provider": {
+                    "order": ["novita"],
+                    "allow_fallbacks": False
+                }
+            }
+        
         return ModelConfig(
             provider=provider,
             model_name=model_name,
             api_key=config_data["api_key"],
-            base_url=config_data["base_url"]
+            base_url=config_data["base_url"],
+            extra_body=extra_body
         )
     
     def get_player_config(self, stone_color: str) -> ModelConfig:
@@ -178,6 +199,9 @@ def get_model_display_name(provider: str, model_name: str) -> str:
         },
         "stepfun": {
             "step-3": "Step-3"
+        },
+        "openrouter": {
+            "qwen/qwen3-235b-a22b-thinking-2507": "Qwen3 235B Thinking"
         }
     }
     

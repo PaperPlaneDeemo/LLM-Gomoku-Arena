@@ -54,7 +54,7 @@ class GomokuVisualizer:
     
     def _detect_default_folder(self):
         """Auto-detect the best default folder based on available games"""
-        folders_to_check = ["r1", "round1"]
+        folders_to_check = ["qwen3", "gpt5", "r1", "round1"]
         
         for folder in folders_to_check:
             if os.path.exists(folder):
@@ -85,7 +85,7 @@ class GomokuVisualizer:
         ttk.Label(folder_frame, text="Folder:").pack(side=tk.LEFT)
         self.folder_var = tk.StringVar(value=self.current_folder)
         self.folder_combobox = ttk.Combobox(folder_frame, textvariable=self.folder_var, 
-                                          values=["round1", "r1"], state="readonly", width=10)
+                                          values=["qwen3", "gpt5", "r1", "round1"], state="readonly", width=10)
         self.folder_combobox.pack(side=tk.LEFT, padx=(5, 0))
         self.folder_combobox.bind('<<ComboboxSelected>>', self.on_folder_changed)
         
@@ -116,16 +116,16 @@ class GomokuVisualizer:
         self.control_frame.pack(fill=tk.X)
         
         # Navigation buttons with keyboard shortcuts
-        self.btn_first = ttk.Button(self.control_frame, text="<< First (⌘+← / 1)", command=self.go_to_first)
+        self.btn_first = ttk.Button(self.control_frame, text="<< First (⌘+← / 1)", command=lambda: self.go_to_first())
         self.btn_first.pack(side=tk.LEFT, padx=2)
         
-        self.btn_prev = ttk.Button(self.control_frame, text="< Previous (← / A)", command=self.previous_move)
+        self.btn_prev = ttk.Button(self.control_frame, text="< Previous (← / A)", command=lambda: self.previous_move())
         self.btn_prev.pack(side=tk.LEFT, padx=2)
         
-        self.btn_next = ttk.Button(self.control_frame, text="Next (→ / D / Space) >", command=self.next_move)
+        self.btn_next = ttk.Button(self.control_frame, text="Next (→ / D / Space) >", command=lambda: self.next_move())
         self.btn_next.pack(side=tk.LEFT, padx=2)
         
-        self.btn_last = ttk.Button(self.control_frame, text="Last (⌘+→ / 0) >>", command=self.go_to_last)
+        self.btn_last = ttk.Button(self.control_frame, text="Last (⌘+→ / 0) >>", command=lambda: self.go_to_last())
         self.btn_last.pack(side=tk.LEFT, padx=2)
         
         # Move counter
@@ -168,9 +168,14 @@ class GomokuVisualizer:
         folder_path = self.current_folder
         
         if os.path.exists(folder_path):
-            # Get all JSON files in the folder subdirectories
-            pattern = os.path.join(folder_path, "*", "*.json")
-            json_files = glob.glob(pattern)
+            # For qwen3 and gpt5 folders, JSON files are directly in the folder
+            if folder_path in ["qwen3", "gpt5"]:
+                pattern = os.path.join(folder_path, "*.json")
+                json_files = glob.glob(pattern)
+            else:
+                # For other folders, JSON files are in subdirectories
+                pattern = os.path.join(folder_path, "*", "*.json")
+                json_files = glob.glob(pattern)
         
         if not json_files:
             # Fallback: look in current directory
@@ -509,17 +514,16 @@ class GomokuVisualizer:
         moves = self.game_data['moves']
         
         # Apply moves up to the current index
-        for i in range(move_index):
-            if i < len(moves):
-                move = moves[i]
-                col = move['column']
-                row = move['row']
-                player = move['player']
-                move_num = move.get('move_number', i + 1)  # Get move number or use index + 1
-                
-                row_idx, col_idx = self.coord_to_indices(col, row)
-                self.board_state[row_idx][col_idx] = player
-                self.move_numbers[row_idx][col_idx] = move_num
+        for i in range(min(move_index, len(moves))):
+            move = moves[i]
+            col = move['column']
+            row = move['row']
+            player = move['player']
+            move_num = move.get('move_number', i + 1)  # Get move number or use index + 1
+            
+            row_idx, col_idx = self.coord_to_indices(col, row)
+            self.board_state[row_idx][col_idx] = player
+            self.move_numbers[row_idx][col_idx] = move_num
         
         # Check if we're at the end and there's a winning line
         if (move_index == len(moves) and 

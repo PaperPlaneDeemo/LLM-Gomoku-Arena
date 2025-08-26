@@ -135,9 +135,16 @@ Always use the place_stone function to make your move."""
                 # Default forced tool choice for other models
                 api_params["tool_choice"] = {"type": "function", "function": {"name": "place_stone"}}
             
+            # Add provider-specific extra parameters
+            extra_kwargs = self.model_config.get_chat_completion_kwargs()
+            api_params.update(extra_kwargs)
+            
             # Add thinking parameter for GLM-4.5 model only
             if self.model == "glm-4.5":
-                api_params["extra_body"] = {"thinking": {"type": "enabled"}}
+                if "extra_body" in api_params:
+                    api_params["extra_body"].update({"thinking": {"type": "enabled"}})
+                else:
+                    api_params["extra_body"] = {"thinking": {"type": "enabled"}}
                 logging.debug(f"[{self.display_name}] Added thinking parameter via extra_body for model: {self.model}")
             
             response = self.client.chat.completions.create(**api_params)

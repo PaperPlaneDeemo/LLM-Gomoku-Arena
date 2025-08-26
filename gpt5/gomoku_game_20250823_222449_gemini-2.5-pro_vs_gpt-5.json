@@ -1,0 +1,72 @@
+{
+  "game_info": {
+    "timestamp": "2025-08-23T22:22:27.893355",
+    "black_player": {
+      "model": "gemini-2.5-pro",
+      "provider": "google",
+      "display_name": "Gemini 2.5 Pro"
+    },
+    "white_player": {
+      "model": "gpt-5",
+      "provider": "openai",
+      "display_name": "GPT-5"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "J",
+      "row": 8,
+      "coordinate": "J8"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "Gemini 2.5 Pro",
+      "column": "L",
+      "row": 8,
+      "coordinate": "L8"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "I",
+      "row": 9,
+      "coordinate": "I9"
+    }
+  ],
+  "result": {
+    "winner": "White",
+    "winner_color": "W",
+    "total_moves": 6,
+    "winning_line": null,
+    "game_end_reason": "Black forfeited - failed to make valid move after retries"
+  }
+}

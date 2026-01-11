@@ -1,0 +1,128 @@
+{
+  "game_info": {
+    "timestamp": "2025-11-10T19:44:30.971992",
+    "black_player": {
+      "model": "kimi-k2-thinking-turbo",
+      "provider": "moonshot",
+      "display_name": "moonshot/kimi-k2-thinking-turbo"
+    },
+    "white_player": {
+      "model": "gpt-5",
+      "provider": "openai",
+      "display_name": "GPT-5"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "H",
+      "row": 1,
+      "coordinate": "H1"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 9,
+      "coordinate": "G9"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "G",
+      "row": 7,
+      "coordinate": "G7"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "H",
+      "row": 9,
+      "coordinate": "H9"
+    },
+    {
+      "move_number": 7,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "I",
+      "row": 9,
+      "coordinate": "I9"
+    },
+    {
+      "move_number": 8,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "J",
+      "row": 10,
+      "coordinate": "J10"
+    },
+    {
+      "move_number": 9,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "J",
+      "row": 9,
+      "coordinate": "J9"
+    },
+    {
+      "move_number": 10,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "I",
+      "row": 10,
+      "coordinate": "I10"
+    },
+    {
+      "move_number": 11,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "I",
+      "row": 8,
+      "coordinate": "I8"
+    },
+    {
+      "move_number": 12,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "J",
+      "row": 11,
+      "coordinate": "J11"
+    },
+    {
+      "move_number": 13,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "G",
+      "row": 6,
+      "coordinate": "G6"
+    }
+  ],
+  "result": {
+    "winner": "Black",
+    "winner_color": "B",
+    "total_moves": 13,
+    "winning_line": null,
+    "game_end_reason": "White forfeited - failed to make valid move after retries"
+  }
+}

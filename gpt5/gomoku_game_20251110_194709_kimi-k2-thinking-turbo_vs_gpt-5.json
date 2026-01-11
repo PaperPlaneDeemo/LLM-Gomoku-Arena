@@ -1,0 +1,72 @@
+{
+  "game_info": {
+    "timestamp": "2025-11-10T19:44:40.936233",
+    "black_player": {
+      "model": "kimi-k2-thinking-turbo",
+      "provider": "moonshot",
+      "display_name": "moonshot/kimi-k2-thinking-turbo"
+    },
+    "white_player": {
+      "model": "gpt-5",
+      "provider": "openai",
+      "display_name": "GPT-5"
+    }
+  },
+  "moves": [
+    {
+      "move_number": 1,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "H",
+      "row": 8,
+      "coordinate": "H8"
+    },
+    {
+      "move_number": 2,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 8,
+      "coordinate": "G8"
+    },
+    {
+      "move_number": 3,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "H",
+      "row": 9,
+      "coordinate": "H9"
+    },
+    {
+      "move_number": 4,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 9,
+      "coordinate": "G9"
+    },
+    {
+      "move_number": 5,
+      "player": "B",
+      "player_name": "moonshot/kimi-k2-thinking-turbo",
+      "column": "F",
+      "row": 8,
+      "coordinate": "F8"
+    },
+    {
+      "move_number": 6,
+      "player": "W",
+      "player_name": "GPT-5",
+      "column": "G",
+      "row": 10,
+      "coordinate": "G10"
+    }
+  ],
+  "result": {
+    "winner": "White",
+    "winner_color": "W",
+    "total_moves": 6,
+    "winning_line": null,
+    "game_end_reason": "Black forfeited - failed to make valid move after retries"
+  }
+}

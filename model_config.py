@@ -38,7 +38,7 @@ class ModelManager:
     PROVIDER_MODELS = {
         "openai": ["gpt-5"],
         "deepseek": ["deepseek-chat"],
-        "moonshot": ["kimi-k2-0711-preview"],
+        "moonshot": ["kimi-k2-0711-preview", "kimi-k2-thinking-turbo"],
         "zhipuai": ["glm-4.5"],
         "anthropic": ["anthropic/claude-sonnet-4"],
         "google": ["gemini-2.5-pro", "gemini-2.5-flash"],

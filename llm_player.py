@@ -138,6 +138,11 @@ Always use the place_stone function to make your move."""
             # Add provider-specific extra parameters
             extra_kwargs = self.model_config.get_chat_completion_kwargs()
             api_params.update(extra_kwargs)
+
+            # Moonshot kimi-k2-thinking-turbo requires higher temperature for consistent tool usage
+            if self.model == "kimi-k2-thinking-turbo":
+                api_params["temperature"] = 1
+                logging.debug(f"[{self.display_name}] Setting temperature=1 for model: {self.model}")
             
             # Add thinking parameter for GLM-4.5 model only
             if self.model == "glm-4.5":

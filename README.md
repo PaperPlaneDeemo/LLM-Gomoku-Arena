@@ -15,7 +15,7 @@ A simple implementation of Gomoku (Five-in-a-Row) where different LLM models com
 
 ### 1. Install Dependencies
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### 2. Configure API Keys
@@ -30,13 +30,13 @@ cp .env.example .env
 **Using command line (recommended):**
 ```bash
 # Quick game with specific models
-python gomoku_game.py -b gpt-5 -w gemini-2.5-flash
+uv run gomoku_game.py -b gpt-5 -w gemini-2.5-flash
 
 # List all available models
-python gomoku_game.py --list-models
+uv run gomoku_game.py --list-models
 
 # Use environment configuration
-python gomoku_game.py
+uv run gomoku_game.py
 ```
 
 

@@ -1,9 +1,12 @@
 """
 Gomoku board representation and management
 """
-from typing import Optional, Tuple, List
-import copy
+from typing import Optional, Tuple
 import logging
+
+BOARD_SIZE = 15
+BOARD_COLUMNS = tuple("ABCDEFGHIJKLMNO")
+BOARD_COL_TO_INDEX = {col: idx for idx, col in enumerate(BOARD_COLUMNS)}
 
 
 class GomokuBoard:
@@ -11,13 +14,13 @@ class GomokuBoard:
     
     def __init__(self):
         # Initialize 15x15 board with empty spaces
-        self.size = 15
+        self.size = BOARD_SIZE
         self.board = [['.' for _ in range(self.size)] for _ in range(self.size)]
         self.move_history = []
         
         # Column mapping A-O (15 columns for 15x15 board)
-        self.cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
-        self.col_to_idx = {col: idx for idx, col in enumerate(self.cols)}
+        self.cols = BOARD_COLUMNS
+        self.col_to_idx = BOARD_COL_TO_INDEX
     
     def _validate_coordinates(self, col: str, row: int) -> bool:
         """Validate if coordinates are within board bounds"""
@@ -40,7 +43,10 @@ class GomokuBoard:
         """
         # Check coordinates are valid
         if not self._validate_coordinates(col, row):
-            return False, f"Invalid coordinates: {col}{row}. Column must be A-O, row must be 1-15"
+            return False, (
+                f"Invalid coordinates: {col}{row}. "
+                f"Column must be {BOARD_COLUMNS[0]}-{BOARD_COLUMNS[-1]}, row must be 1-{self.size}"
+            )
         
         # Check if position is empty
         row_idx, col_idx = self._coord_to_indices(col, row)
@@ -108,17 +114,6 @@ class GomokuBoard:
         
         return "\n".join(lines)
     
-    def is_empty(self) -> bool:
-        """Check if board is empty"""
-        return len(self.move_history) == 0
-    
     def get_last_move(self) -> Optional[Tuple[str, int, str]]:
         """Get the last move played"""
         return self.move_history[-1] if self.move_history else None
-    
-    def copy(self):
-        """Create a deep copy of the board"""
-        new_board = GomokuBoard()
-        new_board.board = copy.deepcopy(self.board)
-        new_board.move_history = copy.deepcopy(self.move_history)
-        return new_board

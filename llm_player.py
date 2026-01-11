@@ -3,13 +3,9 @@ LLM Player using multi-model API with function calling for Gomoku
 """
 import json
 import logging
-import openai
 from typing import Dict, Any, Optional, Tuple
-from gomoku_board import GomokuBoard
+from gomoku_board import GomokuBoard, BOARD_COLUMNS, BOARD_SIZE
 from model_config import ModelConfig, get_model_display_name
-
-# Set up debug logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 class LLMPlayer:
@@ -45,14 +41,14 @@ class LLMPlayer:
                     "properties": {
                         "column": {
                             "type": "string", 
-                            "description": "Column letter (A-O)",
-                            "enum": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"]
+                            "description": f"Column letter ({BOARD_COLUMNS[0]}-{BOARD_COLUMNS[-1]})",
+                            "enum": list(BOARD_COLUMNS)
                         },
                         "row": {
                             "type": "integer",
-                            "description": "Row number (1-15)",
+                            "description": f"Row number (1-{BOARD_SIZE})",
                             "minimum": 1,
-                            "maximum": 15
+                            "maximum": BOARD_SIZE
                         }
                     },
                     "required": ["column", "row"]
@@ -68,7 +64,7 @@ class LLMPlayer:
         base_prompt = f"""You are playing Gomoku (Five-in-a-Row) as {color_name} stones. 
 
 RULES:
-- The board is 15x15 with coordinates A-O (columns) and 1-15 (rows)
+- The board is {BOARD_SIZE}x{BOARD_SIZE} with coordinates {BOARD_COLUMNS[0]}-{BOARD_COLUMNS[-1]} (columns) and 1-{BOARD_SIZE} (rows)
 - Goal: Get 5 of your stones in a row (horizontal, vertical, or diagonal)
 - You play {color_name} stones ('{self.stone_color}'), opponent plays {opponent_name} stones ('{self.opponent_color}')
 - '.' represents empty spaces

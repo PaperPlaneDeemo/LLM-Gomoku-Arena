@@ -49,11 +49,11 @@ class ModelManager:
     
     def __init__(self):
         """Initialize model manager from environment variables"""
-        self.configs = self._load_configurations()
+        self.configs: Dict[str, Dict[str, str]] = self._load_configurations()
     
-    def _load_configurations(self) -> Dict[str, ModelConfig]:
-        """Load all available model configurations from environment"""
-        configs = {}
+    def _load_configurations(self) -> Dict[str, Dict[str, str]]:
+        """Load all available provider credentials from the environment"""
+        configs: Dict[str, Dict[str, str]] = {}
         
         for provider in self.PROVIDER_MODELS.keys():
             api_key = os.getenv(f"{provider.upper()}_API_KEY")
@@ -108,14 +108,6 @@ class ModelManager:
             raise ValueError(f"Invalid stone color: {stone_color}. Must be 'B' or 'W'")
         
         return self.get_model_config(provider, model_name)
-    
-    def list_available_providers(self) -> list:
-        """List all configured providers"""
-        return list(self.configs.keys())
-    
-    def list_available_models(self, provider: str) -> list:
-        """List all available models for a provider"""
-        return self.PROVIDER_MODELS.get(provider, [])
     
     def find_provider_for_model(self, model_name: str) -> str:
         """Find the provider for a given model name"""

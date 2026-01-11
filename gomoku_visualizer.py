@@ -4,12 +4,12 @@ A GUI tool to visualize and replay LLM vs LLM Gomoku games from JSON files
 """
 
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, messagebox
 import json
 import os
 import glob
-from typing import Dict, List, Optional, Tuple
-import sys
+from typing import Tuple
+from gomoku_board import BOARD_COL_TO_INDEX, BOARD_COLUMNS, BOARD_SIZE
 
 
 class GomokuVisualizer:
@@ -26,8 +26,10 @@ class GomokuVisualizer:
         # Game data
         self.game_data = None
         self.current_move_index = 0
-        self.board_size = 15
+        self.board_size = BOARD_SIZE
         self.cell_size = 38  # Reduced from 45 to fit better with smaller window
+        self.columns = BOARD_COLUMNS
+        self.board_origin = (50, 45)
         
         # Colors
         self.colors = {
@@ -58,8 +60,10 @@ class GomokuVisualizer:
         
         for folder in folders_to_check:
             if os.path.exists(folder):
-                pattern = os.path.join(folder, "*", "*.json")
-                json_files = glob.glob(pattern)
+                if folder in ["qwen3", "gpt5"]:
+                    json_files = glob.glob(os.path.join(folder, "*.json"))
+                else:
+                    json_files = glob.glob(os.path.join(folder, "*", "*.json"))
                 if json_files:
                     return folder
         
@@ -258,8 +262,7 @@ class GomokuVisualizer:
     
     def coord_to_indices(self, col: str, row: int) -> Tuple[int, int]:
         """Convert board coordinates to array indices"""
-        cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
-        col_idx = cols.index(col)
+        col_idx = BOARD_COL_TO_INDEX[col]
         row_idx = self.board_size - row  # Convert to 0-based from bottom
         return row_idx, col_idx
     
@@ -374,8 +377,7 @@ class GomokuVisualizer:
         self.canvas.delete("all")
         
         # Board background - center the board in the canvas
-        board_x = 50  # Increased to 50 to balance the wider canvas
-        board_y = 45  # Keep at 45 for vertical centering
+        board_x, board_y = self.board_origin
         # Calculate board size based on 14 intervals between 15 lines
         board_width = (self.board_size - 1) * self.cell_size
         board_height = (self.board_size - 1) * self.cell_size
@@ -404,13 +406,12 @@ class GomokuVisualizer:
             )
         
         # Column labels (A-O) - aligned with grid intersections - 上方
-        cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
-        for i, col in enumerate(cols):
+        for i, col in enumerate(self.columns):
             x = board_x + i * self.cell_size  # Align with grid lines
             self.canvas.create_text(x, board_y - 20, text=col, font=('Arial', 12, 'bold'), fill='black')
         
         # Column labels (A-O) - aligned with grid intersections - 下方（从左到右A-O）
-        for i, col in enumerate(cols):
+        for i, col in enumerate(self.columns):
             x = board_x + i * self.cell_size  # Align with grid lines
             self.canvas.create_text(x, board_y + board_height + 20, text=col, font=('Arial', 12, 'bold'), fill='black')
         
@@ -431,9 +432,9 @@ class GomokuVisualizer:
     
     def draw_stones(self):
         """Draw stones on the board"""
-        board_x = 50  # Match the board drawing coordinates
-        board_y = 45  # Match the board drawing coordinates
+        board_x, board_y = self.board_origin
         stone_radius = self.cell_size // 2.5  # Increased from // 3 to make stones larger
+        columns = self.columns
         
         last_move_pos = None
         if (self.game_data and self.current_move_index > 0 and 
@@ -454,8 +455,7 @@ class GomokuVisualizer:
                     outline_color = self.colors['white'] if stone == 'B' else self.colors['black']
                     
                     # Check if this is a winning stone
-                    cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
-                    current_col = cols[col]
+                    current_col = columns[col]
                     current_row = self.board_size - row
                     
                     is_winning = (current_col, current_row) in self.winning_positions

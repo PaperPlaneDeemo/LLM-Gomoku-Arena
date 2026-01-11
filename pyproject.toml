@@ -1,7 +1,7 @@
 [project]
 name = "llm-gomoku"
 version = "0.1.0"
-description = "Add your description here"
+description = "LLM-vs-LLM Gomoku (five-in-a-row) arena with OpenAI-compatible function calling"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

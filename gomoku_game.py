@@ -1,7 +1,6 @@
 """
 Main Gomoku game runner with multi-model LLM vs LLM gameplay
 """
-import os
 import time
 import logging
 import json

@@ -57,31 +57,6 @@ class WinChecker:
         
         return count
     
-    def find_winner(self) -> Optional[str]:
-        """
-        Check the entire board for any winning condition
-        Returns 'B' for black win, 'W' for white win, None for no winner
-        """
-        for row_idx in range(self.board.size):
-            for col_idx in range(self.board.size):
-                stone = self.board.board[row_idx][col_idx]
-                if stone in ['B', 'W']:
-                    # Convert back to board coordinates for checking
-                    col = self.board.cols[col_idx]
-                    row = self.board.size - row_idx
-                    
-                    # Temporarily place stone and check win
-                    original = self.board.board[row_idx][col_idx]
-                    self.board.board[row_idx][col_idx] = '.'  # Temporarily remove
-                    
-                    if self.check_win(col, row, stone):
-                        self.board.board[row_idx][col_idx] = original  # Restore
-                        return stone
-                    
-                    self.board.board[row_idx][col_idx] = original  # Restore
-        
-        return None
-    
     def is_board_full(self) -> bool:
         """Check if the board is completely full (draw condition)"""
         for row in self.board.board:
@@ -111,20 +86,26 @@ class WinChecker:
             line_positions = [(col, row)]  # Start with the placed stone
             
             # Collect stones in positive direction
-            count_pos = self._collect_line(row_idx, col_idx, dr, dc, stone, line_positions)
+            self._collect_line(row_idx, col_idx, dr, dc, stone, line_positions)
             
             # Collect stones in negative direction
-            count_neg = self._collect_line(row_idx, col_idx, -dr, -dc, stone, line_positions)
+            self._collect_line(row_idx, col_idx, -dr, -dc, stone, line_positions)
             
             if len(line_positions) >= 5:
                 return line_positions[:5]  # Return first 5 stones
         
         return None
     
-    def _collect_line(self, start_row: int, start_col: int, dr: int, dc: int, 
-                     stone: str, line_positions: List[Tuple[str, int]]) -> int:
+    def _collect_line(
+        self,
+        start_row: int,
+        start_col: int,
+        dr: int,
+        dc: int,
+        stone: str,
+        line_positions: List[Tuple[str, int]],
+    ) -> None:
         """Collect consecutive stone positions in a direction"""
-        count = 0
         row, col = start_row + dr, start_col + dc
         
         while (0 <= row < self.board.size and 
@@ -135,8 +116,5 @@ class WinChecker:
             board_row = self.board.size - row
             line_positions.append((board_col, board_row))
             
-            count += 1
             row += dr
             col += dc
-        
-        return count
